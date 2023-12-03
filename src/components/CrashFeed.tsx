@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { capitalizeFirstLetterOnly } from '../helpers/capitalizeFirstLetterOnly';
+import { fetchCrashes } from '../api/fetchCrashes';
+import { formatLocationString } from '../helpers/formatLocationString';
 
 interface CrashData {
   collision_id: string;
@@ -29,24 +29,23 @@ interface CrashData {
 }
 
 const CrashFeed = () => {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['crashData'],
-    queryFn: () =>
-      fetch('https://data.cityofnewyork.us/resource/h9gi-nx95.json').then(res =>
-        res.json()
-      ),
-  });
-
+  const { isPending, error, data } = fetchCrashes();
   console.log(data);
 
   return (
-    <main className='bg-red-200 max-w-4xl mx-auto mt-20 px-4'>
+    <main className='max-w-4xl mx-auto mt-20 px-4'>
       {isPending && <p>Fetching data...</p>}
       {error && <p>Uh oh! Something went wrong.</p>}
+
       {data?.map((crash: CrashData) => (
-        <p key={crash?.collision_id}>
-          Crash at {capitalizeFirstLetterOnly(crash?.on_street_name)}
-        </p>
+        <div
+          key={crash?.collision_id}
+          className='bg-white max-w-lg mx-auto mb-4 p-4 rounded-2xl shadow-sm'
+        >
+          <p className='text-xl font-semibold'>
+            Crash at {formatLocationString(crash?.on_street_name)}
+          </p>
+        </div>
       ))}
     </main>
   );
