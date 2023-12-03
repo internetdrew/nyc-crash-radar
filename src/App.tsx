@@ -1,11 +1,16 @@
 import { Navbar, Header, CrashFeed } from './components';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Header />
-      <CrashFeed />
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <Header />
+        <CrashFeed />
+      </QueryClientProvider>
     </>
   );
 }
