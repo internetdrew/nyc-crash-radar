@@ -1,5 +1,5 @@
-import { fetchCrashes } from '../api/fetchCrashes';
-import { formatLocationString } from '../helpers/formatLocationString';
+import { fetchCrashes } from '@api/fetchCrashes';
+import { formatLocationString } from '@helpers/formatLocationString';
 
 interface CrashData {
   collision_id: string;
@@ -43,7 +43,7 @@ const CrashFeed = () => {
           className='bg-white max-w-lg mx-auto mb-4 p-4 rounded-2xl shadow-sm'
         >
           <p className='text-xl font-semibold'>
-            Crash at {formatLocationString(crash?.on_street_name)}
+            Crash reported on {formatLocationString(crash?.on_street_name)}
           </p>
         </div>
       ))}
