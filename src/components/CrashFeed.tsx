@@ -104,7 +104,7 @@ const CrashFeed = () => {
                         crash?.vehicle_type_code4,
                         crash?.vehicle_type_code5,
                       ].map((vehicle, index) => {
-                        if (vehicle)
+                        if (vehicle) {
                           return (
                             <article
                               key={`vehicle ${index}`}
@@ -117,6 +117,7 @@ const CrashFeed = () => {
                               {formatVehicle(vehicle)}
                             </article>
                           );
+                        }
                       })}
                     </div>
                   </section>
