@@ -1,6 +1,9 @@
 import { fetchCrashes } from '@api/fetchCrashes';
 import { formatLocationString } from '@helpers/formatLocationString';
 import { formatDate } from '@/helpers/formatDate';
+import { formatVehicle } from '@/helpers/formatVehicle';
+import { TbCarSuv } from 'react-icons/tb';
+import { FaCar } from 'react-icons/fa';
 
 interface CrashDataProps {
   collision_id: string;
@@ -27,9 +30,18 @@ interface CrashDataProps {
   number_of_motorist_killed: string;
   contributing_factor_vehicle_1: string;
   contributing_factor_vehicle_2: string;
+  contributing_factor_vehicle_3: string;
   vehicle_type_code1: string;
   vehicle_type_code2: string;
+  vehicle_type_code3: string;
 }
+
+const iconClasses = 'mx-auto w-8 h-8';
+
+const iconMapping: Record<string, JSX.Element> = {
+  'Station Wagon/Sport Utility Vehicle': <TbCarSuv className={iconClasses} />,
+  Sedan: <FaCar className={iconClasses} />,
+};
 
 const CrashFeed = () => {
   const { isPending, error, data } = fetchCrashes();
@@ -40,7 +52,7 @@ const CrashFeed = () => {
       {isPending && <p>Fetching data...</p>}
       {error && <p>Uh oh! Something went wrong.</p>}
 
-      {data?.map((crash: CrashDataProps) => (
+      {data?.map((crash: CrashDataProps, idx: number) => (
         <div
           key={crash?.collision_id}
           className='bg-white mx-auto mb-4 p-6 rounded-2xl shadow-sm ring-1 ring-slate-300'
@@ -54,8 +66,24 @@ const CrashFeed = () => {
               `near ${formatLocationString(crash.cross_street_name)}`}
             {crash.on_street_name &&
               `on ${formatLocationString(crash?.on_street_name)}`}
-            {crash?.borough && ` in ${formatLocationString(crash.borough)}`}
+            {crash?.borough && ` in ${formatLocationString(crash.borough)}`}{' '}
+            {idx}
           </p>
+          <section className='mt-6 grid grid-cols-2 gap-6'>
+            {[
+              crash?.vehicle_type_code1,
+              crash?.vehicle_type_code2,
+              crash?.vehicle_type_code3,
+            ].map(vehicle => {
+              if (vehicle)
+                return (
+                  <article className='ring-1 ring-slate-300 w-full text-center p-2 mx-auto rounded-lg font-semibold mt-auto text-xs sm:text-sm'>
+                    {iconMapping[vehicle]}
+                    {formatVehicle(vehicle)}
+                  </article>
+                );
+            })}
+          </section>
         </div>
       ))}
     </main>
