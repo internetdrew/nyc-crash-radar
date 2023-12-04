@@ -36,7 +36,7 @@ const CrashFeed = () => {
   console.log(data);
 
   return (
-    <main className='max-w-lg mx-auto mt-20 p-4'>
+    <main className='max-w-lg mx-auto mt-10 p-4'>
       {isPending && <p>Fetching data...</p>}
       {error && <p>Uh oh! Something went wrong.</p>}
 

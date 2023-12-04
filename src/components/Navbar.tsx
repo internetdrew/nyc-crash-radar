@@ -5,7 +5,7 @@ const Navbar = () => {
   const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false);
 
   return (
-    <nav className='px-4 pt-4 backdrop-blur-sm sticky top-0'>
+    <nav className='px-4 py-3 backdrop-blur-sm sticky top-0'>
       <div className='flex items-center justify-between max-w-7xl mx-auto'>
         <div className='text-2xl font-bold'>NYC Crash Radar</div>
         <div>
