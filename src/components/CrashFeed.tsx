@@ -36,14 +36,14 @@ const CrashFeed = () => {
   console.log(data);
 
   return (
-    <main className='max-w-4xl mx-auto mt-20 px-4'>
+    <main className='max-w-lg mx-auto mt-20 p-4'>
       {isPending && <p>Fetching data...</p>}
       {error && <p>Uh oh! Something went wrong.</p>}
 
       {data?.map((crash: CrashDataProps) => (
         <div
           key={crash?.collision_id}
-          className='bg-white max-w-lg mx-auto mb-4 p-6 rounded-2xl shadow-sm ring-1 ring-slate-300'
+          className='bg-white mx-auto mb-4 p-6 rounded-2xl shadow-sm ring-1 ring-slate-300'
         >
           <p className='text-right mb-2 text-gray-600 text-sm'>
             {formatDate(crash?.crash_date)}
