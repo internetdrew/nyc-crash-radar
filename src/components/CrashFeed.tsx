@@ -23,6 +23,7 @@ import { FaMotorcycle } from 'react-icons/fa';
 import { MdCarCrash } from 'react-icons/md';
 import { GiTowTruck } from 'react-icons/gi';
 import { TbFiretruck } from 'react-icons/tb';
+import { MdForklift } from 'react-icons/md';
 
 const iconClasses = 'mx-auto w-8 h-8';
 
@@ -49,6 +50,7 @@ const iconMapping: Record<string, JSX.Element> = {
   Motorcycle: <FaMotorcycle className={iconClasses} />,
   'Tow Truck / Wrecker': <GiTowTruck className={iconClasses} />,
   'Fdny fire': <TbFiretruck className={iconClasses} />,
+  FORKLIFT: <MdForklift className={iconClasses} />,
 };
 
 const CrashFeed = () => {
