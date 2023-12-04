@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className='p-4'>
       <div className='flex items-center justify-between max-w-7xl mx-auto'>
-        <div className='text-2xl font-semibold'>NYC Crash Radar</div>
+        <div className='text-2xl font-bold'>NYC Crash Radar</div>
         <div>
           <ul>
             <li>About</li>
