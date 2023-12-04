@@ -52,8 +52,14 @@ const CrashFeed = () => {
 
   return (
     <main className='max-w-lg mx-auto mt-10 p-4'>
-      {isPending && <p>Fetching data...</p>}
-      {error && <p>Uh oh! Something went wrong.</p>}
+      {isPending && (
+        <p className='text-xl font-bold text-center'>Fetching crash data...</p>
+      )}
+      {error && (
+        <p className='text-xl font-bold text-center'>
+          Uh oh! Something went wrong.
+        </p>
+      )}
 
       {data?.map(crash => {
         if (crash?.vehicle_type_code1) {
