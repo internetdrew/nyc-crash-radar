@@ -20,6 +20,7 @@ import { GiMineTruck } from 'react-icons/gi';
 import { HiTruck } from 'react-icons/hi2';
 import { PiMopedFront } from 'react-icons/pi';
 import { FaMotorcycle } from 'react-icons/fa';
+import { MdCarCrash } from 'react-icons/md';
 
 const iconClasses = 'mx-auto w-8 h-8';
 
@@ -40,6 +41,7 @@ const iconMapping: Record<string, JSX.Element> = {
   Ambulance: <GiAmbulance className={iconClasses} />,
   AMBULANCE: <GiAmbulance className={iconClasses} />,
   'Box Truck': <FaTruck className={iconClasses} />,
+  Truck: <FaTruck className={iconClasses} />,
   'Garbage or Refuse': <HiTruck className={iconClasses} />,
   Moped: <PiMopedFront className={iconClasses} />,
   Motorcycle: <FaMotorcycle className={iconClasses} />,
@@ -93,7 +95,9 @@ const CrashFeed = () => {
                           className='ring-1 ring-slate-950 w-full text-center p-2 mx-auto rounded-lg font-semibold mt-auto text-xs sm:text-sm'
                         >
                           <p>Vehicle {index + 1}</p>
-                          {iconMapping[vehicle]}
+                          {iconMapping[vehicle] ?? (
+                            <MdCarCrash className={iconClasses} />
+                          )}
                           {formatVehicle(vehicle)}
                         </article>
                       );

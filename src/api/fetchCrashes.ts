@@ -34,15 +34,14 @@ interface CrashData {
 }
 
 export const fetchCrashes = () => {
-  const crashData = useQuery({
+  return useQuery({
     queryKey: ['crashData'],
     queryFn: async () => {
       const res = await fetch(
-        'https://data.cityofnewyork.us/resource/h9gi-nx95.json'
+        'https://data.cityofnewyork.us/resource/h9gi-nx95.json?$order=crash_date DESC'
       );
       const data = await res.json();
       return data as CrashData[];
     },
   });
-  return crashData;
 };
