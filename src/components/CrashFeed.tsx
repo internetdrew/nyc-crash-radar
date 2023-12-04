@@ -21,39 +21,6 @@ import { HiTruck } from 'react-icons/hi2';
 import { PiMopedFront } from 'react-icons/pi';
 import { FaMotorcycle } from 'react-icons/fa';
 
-interface CrashDataProps {
-  collision_id: string;
-  crash_date: string;
-  crash_time: string;
-  on_street_name: string;
-  off_street_name: string;
-  cross_street_name: string;
-  latitude: string;
-  longitude: string;
-  location: {
-    human_address: string;
-    latitude: string;
-    longitude: string;
-  };
-  borough: string;
-  number_of_persons_injured: string;
-  number_of_persons_killed: string;
-  number_of_pedestrians_injured: string;
-  number_of_pedestrians_killed: string;
-  number_of_cyclist_injured: string;
-  number_of_cyclist_killed: string;
-  number_of_motorist_injured: string;
-  number_of_motorist_killed: string;
-  contributing_factor_vehicle_1: string;
-  contributing_factor_vehicle_2: string;
-  contributing_factor_vehicle_3: string;
-  vehicle_type_code1: string;
-  vehicle_type_code2: string;
-  vehicle_type_code3: string;
-  vehicle_type_code4: string;
-  vehicle_type_code5: string;
-}
-
 const iconClasses = 'mx-auto w-8 h-8';
 
 const iconMapping: Record<string, JSX.Element> = {
@@ -86,7 +53,7 @@ const CrashFeed = () => {
       {isPending && <p>Fetching data...</p>}
       {error && <p>Uh oh! Something went wrong.</p>}
 
-      {data?.map((crash: CrashDataProps) => {
+      {data?.map(crash => {
         if (crash?.vehicle_type_code1) {
           return (
             <div
