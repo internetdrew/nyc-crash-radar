@@ -38,7 +38,7 @@ export const fetchCrashes = () => {
     queryKey: ['crashData'],
     queryFn: async () => {
       const res = await fetch(
-        'https://data.cityofnewyork.us/resource/h9gi-nx95.json?$order=crash_date DESC'
+        'https://data.cityofnewyork.us/resource/h9gi-nx95.json?$order=crash_date%20DESC'
       );
       const data = await res.json();
       return data as CrashData[];
