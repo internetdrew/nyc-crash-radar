@@ -1,12 +1,14 @@
 import { fetchCrashes } from '@api/fetchCrashes';
 import { formatLocationString } from '@helpers/formatLocationString';
+import { formatDate } from '@/helpers/formatDate';
 
-interface CrashData {
+interface CrashDataProps {
   collision_id: string;
   crash_date: string;
   crash_time: string;
   on_street_name: string;
   off_street_name: string;
+  cross_street_name: string;
   latitude: string;
   longitude: string;
   location: {
@@ -14,6 +16,7 @@ interface CrashData {
     latitude: string;
     longitude: string;
   };
+  borough: string;
   number_of_persons_injured: string;
   number_of_persons_killed: string;
   number_of_pedestrians_injured: string;
@@ -37,13 +40,21 @@ const CrashFeed = () => {
       {isPending && <p>Fetching data...</p>}
       {error && <p>Uh oh! Something went wrong.</p>}
 
-      {data?.map((crash: CrashData) => (
+      {data?.map((crash: CrashDataProps) => (
         <div
           key={crash?.collision_id}
-          className='bg-white max-w-lg mx-auto mb-4 p-4 rounded-2xl shadow-sm'
+          className='bg-white max-w-lg mx-auto mb-4 p-6 rounded-2xl shadow-sm ring-1 ring-slate-300'
         >
+          <p className='text-right mb-2 text-gray-600 text-sm'>
+            {formatDate(crash?.crash_date)}
+          </p>
           <p className='text-xl font-semibold'>
-            Crash reported on {formatLocationString(crash?.on_street_name)}
+            Crash reported{' '}
+            {crash?.cross_street_name &&
+              `near ${formatLocationString(crash.cross_street_name)}`}
+            {crash.on_street_name &&
+              `on ${formatLocationString(crash?.on_street_name)}`}
+            {crash?.borough && ` in ${formatLocationString(crash.borough)}`}
           </p>
         </div>
       ))}
