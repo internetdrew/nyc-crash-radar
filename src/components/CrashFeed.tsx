@@ -54,9 +54,7 @@ const CrashFeed = () => {
               <section className='mt-6'>
                 {crash?.vehicle_type_code1 && (
                   <p className='mb-2 text-gray-800'>
-                    {crash?.vehicle_type_code2
-                      ? 'Vehicles Involved'
-                      : 'Vehicle'}{' '}
+                    {crash?.vehicle_type_code2 ? 'Vehicles' : 'Vehicle'}{' '}
                     Involved
                   </p>
                 )}
