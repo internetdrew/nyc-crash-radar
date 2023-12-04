@@ -8,6 +8,18 @@ import { FaTruckPickup } from 'react-icons/fa';
 import { GiTruck } from 'react-icons/gi';
 import { FaTruck } from 'react-icons/fa';
 import { GiFuelTank } from 'react-icons/gi';
+import { MdOutlinePedalBike } from 'react-icons/md';
+import { FaBus } from 'react-icons/fa6';
+import { FaTaxi } from 'react-icons/fa';
+import { PiVanBold } from 'react-icons/pi';
+import { GiScooter } from 'react-icons/gi';
+import { MdOutlineElectricBike } from 'react-icons/md';
+import { MdOutlineElectricScooter } from 'react-icons/md';
+import { GiAmbulance } from 'react-icons/gi';
+import { GiMineTruck } from 'react-icons/gi';
+import { HiTruck } from 'react-icons/hi2';
+import { PiMopedFront } from 'react-icons/pi';
+import { FaMotorcycle } from 'react-icons/fa';
 
 interface CrashDataProps {
   collision_id: string;
@@ -38,6 +50,8 @@ interface CrashDataProps {
   vehicle_type_code1: string;
   vehicle_type_code2: string;
   vehicle_type_code3: string;
+  vehicle_type_code4: string;
+  vehicle_type_code5: string;
 }
 
 const iconClasses = 'mx-auto w-8 h-8';
@@ -47,8 +61,21 @@ const iconMapping: Record<string, JSX.Element> = {
   Sedan: <FaCar className={iconClasses} />,
   'Pick-up Truck': <FaTruckPickup className={iconClasses} />,
   'Tractor Truck Diesel': <GiTruck className={iconClasses} />,
-  Dump: <FaTruck className={iconClasses} />,
+  Dump: <GiMineTruck className={iconClasses} />,
   Tanker: <GiFuelTank className={iconClasses} />,
+  Bike: <MdOutlinePedalBike className={iconClasses} />,
+  Bus: <FaBus className={iconClasses} />,
+  Taxi: <FaTaxi className={iconClasses} />,
+  Van: <PiVanBold className={iconClasses} />,
+  Motorscooter: <GiScooter className={iconClasses} />,
+  'E-Bike': <MdOutlineElectricBike className={iconClasses} />,
+  'E-Scooter': <MdOutlineElectricScooter className={iconClasses} />,
+  Ambulance: <GiAmbulance className={iconClasses} />,
+  AMBULANCE: <GiAmbulance className={iconClasses} />,
+  'Box Truck': <FaTruck className={iconClasses} />,
+  'Garbage or Refuse': <HiTruck className={iconClasses} />,
+  Moped: <PiMopedFront className={iconClasses} />,
+  Motorcycle: <FaMotorcycle className={iconClasses} />,
 };
 
 const CrashFeed = () => {
@@ -78,16 +105,26 @@ const CrashFeed = () => {
             {idx}
           </p>
           <section className='mt-6'>
-            <p className='mb-2 text-gray-600'>Vehicles Involved</p>
+            {crash?.vehicle_type_code1 && (
+              <p className='mb-2 text-gray-600'>
+                {crash?.vehicle_type_code2 ? 'Vehicles' : 'Vehicle'} Involved
+              </p>
+            )}
             <div className='grid grid-cols-2 gap-4'>
               {[
                 crash?.vehicle_type_code1,
                 crash?.vehicle_type_code2,
                 crash?.vehicle_type_code3,
-              ].map(vehicle => {
+                crash?.vehicle_type_code4,
+                crash?.vehicle_type_code5,
+              ].map((vehicle, index) => {
                 if (vehicle)
                   return (
-                    <article className='ring-1 ring-slate-300 w-full text-center p-2 mx-auto rounded-lg font-semibold mt-auto text-xs sm:text-sm'>
+                    <article
+                      key={`vehicle ${index}`}
+                      className='ring-1 ring-slate-300 w-full text-center p-2 mx-auto rounded-lg font-semibold mt-auto text-xs sm:text-sm'
+                    >
+                      <p>Vehicle {index + 1}</p>
                       {iconMapping[vehicle]}
                       {formatVehicle(vehicle)}
                     </article>
