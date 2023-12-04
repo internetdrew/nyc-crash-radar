@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 interface CrashData {
   collision_id: string;
@@ -34,14 +34,16 @@ interface CrashData {
 }
 
 export const fetchCrashes = () => {
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ['crashData'],
-    queryFn: async () => {
+    queryFn: async ({ pageParam }) => {
       const res = await fetch(
-        'https://data.cityofnewyork.us/resource/h9gi-nx95.json?$order=crash_date%20DESC'
+        `https://data.cityofnewyork.us/resource/h9gi-nx95.json?$limit=5&$offset=${pageParam}&$order=crash_date%20DESC`
       );
       const data = await res.json();
       return data as CrashData[];
     },
+    initialPageParam: 0,
+    getNextPageParam: (_lastPage, pages) => pages.length * 5,
   });
 };
