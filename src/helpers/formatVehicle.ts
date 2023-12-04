@@ -8,6 +8,8 @@ export const formatVehicle = (vehicle: string) => {
       return 'Box Van';
     case 'AMBULANCE':
       return 'Ambulance';
+    case 'Fdny fire':
+      return 'FDNY Fire';
     default:
       return vehicle;
   }

@@ -21,6 +21,8 @@ import { HiTruck } from 'react-icons/hi2';
 import { PiMopedFront } from 'react-icons/pi';
 import { FaMotorcycle } from 'react-icons/fa';
 import { MdCarCrash } from 'react-icons/md';
+import { GiTowTruck } from 'react-icons/gi';
+import { TbFiretruck } from 'react-icons/tb';
 
 const iconClasses = 'mx-auto w-8 h-8';
 
@@ -45,6 +47,8 @@ const iconMapping: Record<string, JSX.Element> = {
   'Garbage or Refuse': <HiTruck className={iconClasses} />,
   Moped: <PiMopedFront className={iconClasses} />,
   Motorcycle: <FaMotorcycle className={iconClasses} />,
+  'Tow Truck / Wrecker': <GiTowTruck className={iconClasses} />,
+  'Fdny fire': <TbFiretruck className={iconClasses} />,
 };
 
 const CrashFeed = () => {
