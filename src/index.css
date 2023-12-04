@@ -6,6 +6,6 @@
 
 @layer base {
   body {
-    background-color: #f6f6f8;
+    @apply bg-stone-200;
   }
 }
