@@ -1,4 +1,4 @@
-export const formatLocationString = (str: string) => {
+export const formatAsTitleCase = (str: string) => {
   if (str) {
     const words = str.split(' ');
     return words

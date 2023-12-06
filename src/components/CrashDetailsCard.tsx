@@ -1,5 +1,5 @@
 const CrashDetailsCard = () => {
-  return <div>CrashDetailsCard</div>;
+  return <></>;
 };
 
 export default CrashDetailsCard;

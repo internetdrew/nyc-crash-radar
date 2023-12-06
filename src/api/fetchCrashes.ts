@@ -26,6 +26,8 @@ interface CrashData {
   contributing_factor_vehicle_1: string;
   contributing_factor_vehicle_2: string;
   contributing_factor_vehicle_3: string;
+  contributing_factor_vehicle_4: string;
+  contributing_factor_vehicle_5: string;
   vehicle_type_code1: string;
   vehicle_type_code2: string;
   vehicle_type_code3: string;
