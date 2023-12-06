@@ -23,6 +23,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@api/*": ["src/api/*"],
+      "@utils/*": ["src/utils/*"],
       "@helpers/*": ["src/helpers/*"],
       "@components/*": ["src/components/*"]
     }

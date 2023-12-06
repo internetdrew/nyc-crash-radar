@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import { fetchCrashes } from '@api/fetchCrashes';
 import { formatAsTitleCase } from '@helpers/formatAsTitleCase';
-import { formatDate } from '@/helpers/formatDate';
-import { formatVehicle } from '@/helpers/formatVehicle';
-import { iconMapping, DefaultVehicleIcon } from '@/utils/vehicleIconMap';
+import { formatDate } from '@helpers/formatDate';
+import { vehicleFormattingMap } from '@utils/vehicleMap';
+import { vehicleIconMap, DefaultVehicleIcon } from '@utils/vehicleIconMap';
 import { useIntersection } from '@mantine/hooks';
-import { formatAsSentenceCase } from '@/helpers/formatAsSentenceCase';
+import { formatAsSentenceCase } from '@helpers/formatAsSentenceCase';
 
 const CrashFeed = () => {
   const { isPending, error, data, fetchNextPage, isFetching } = fetchCrashes();
@@ -21,7 +21,6 @@ const CrashFeed = () => {
   }
 
   const crashList = data?.pages?.flatMap(page => page);
-  console.log(crashList);
 
   return (
     <main className='max-w-lg mx-auto mt-10 p-4'>
@@ -88,8 +87,10 @@ const CrashFeed = () => {
                           {crash?.vehicle_type_code2 && (
                             <p>Vehicle {index + 1}</p>
                           )}
-                          {iconMapping[vehicle] ?? <DefaultVehicleIcon />}
-                          {formatVehicle(vehicle)}
+                          {vehicleIconMap.get(vehicle) ?? (
+                            <DefaultVehicleIcon />
+                          )}
+                          {vehicleFormattingMap.get(vehicle) ?? vehicle}
                         </article>
                       );
                     }
