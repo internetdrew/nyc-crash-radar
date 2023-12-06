@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+
 import { fetchCrashes } from '@api/fetchCrashes';
 import { formatAsTitleCase } from '@helpers/formatAsTitleCase';
 import { formatDate } from '@helpers/formatDate';
@@ -6,6 +7,7 @@ import { vehicleFormattingMap } from '@utils/vehicleMap';
 import { vehicleIconMap, DefaultVehicleIcon } from '@utils/vehicleIconMap';
 import { useIntersection } from '@mantine/hooks';
 import { formatAsSentenceCase } from '@helpers/formatAsSentenceCase';
+import { HashLink as Link } from 'react-router-hash-link';
 
 const CrashFeed = () => {
   const { isPending, error, data, fetchNextPage, isFetching } = fetchCrashes();
@@ -47,13 +49,17 @@ const CrashFeed = () => {
         if (crash?.vehicle_type_code1) {
           return (
             <div
+              id={crash?.collision_id}
               key={crash?.collision_id}
               ref={idx === crashList.length - 1 ? ref : null}
               className='bg-slate-50 mx-auto mb-4 p-6 rounded-2xl shadow-sm ring-1 ring-slate-950'
             >
-              <p className='text-right mb-2 text-gray-800 text-sm'>
-                {formatDate(crash?.crash_date)}
-              </p>
+              <div className='text-gray-700 flex items-center justify-between mb-2 text-sm'>
+                <Link to={`#${crash?.collision_id}`}>
+                  #{crash?.collision_id}
+                </Link>
+                <span>{formatDate(crash?.crash_date)}</span>
+              </div>
               <p className='text-xl font-semibold'>
                 Crash reported{' '}
                 {crash?.cross_street_name &&
