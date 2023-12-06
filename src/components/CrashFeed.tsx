@@ -43,7 +43,6 @@ const CrashFeed = () => {
             crash?.contributing_factor_vehicle_5,
           ].filter(factor => factor !== undefined && factor !== 'Unspecified')
             .length > 0;
-        console.log(contributingFactorsPresent);
 
         if (crash?.vehicle_type_code1) {
           return (
