@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
+import 'leaflet/dist/images/marker-icon.png';
 
 interface CrashMapProps {
   lat: number;
@@ -9,8 +10,8 @@ interface CrashMapProps {
 
 const CrashMap = (coords: CrashMapProps) => {
   const mapIcon = new Icon({
-    iconUrl: '/marker.svg',
-    iconSize: [38, 38],
+    iconUrl: '',
+    iconSize: [40, 40],
   });
 
   return (
@@ -24,7 +25,7 @@ const CrashMap = (coords: CrashMapProps) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
-      <Marker position={[coords.lat, coords.lng]} icon={mapIcon} />
+      <Marker position={[coords.lat, coords.lng]} />
     </MapContainer>
   );
 };

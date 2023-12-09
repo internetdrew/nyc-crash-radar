@@ -44,6 +44,7 @@ export const vehicleIconMap = new Map([
   ['Garbage or Refuse', <HiTruck className={iconClasses} />],
   ['Moped', <PiMopedFront className={iconClasses} />],
   ['Motorcycle', <FaMotorcycle className={iconClasses} />],
+  ['Motorbike', <FaMotorcycle className={iconClasses} />],
   ['Tow Truck / Wrecker', <GiTowTruck className={iconClasses} />],
   ['Fdny fire', <TbFiretruck className={iconClasses} />],
   ['FORKLIFT', <MdForklift className={iconClasses} />],
