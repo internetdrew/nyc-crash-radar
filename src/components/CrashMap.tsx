@@ -16,7 +16,7 @@ const CrashMap = (coords: CrashMapProps) => {
   return (
     <MapContainer
       center={[coords.lat, coords.lng]}
-      zoom={15}
+      zoom={20}
       scrollWheelZoom={false}
       dragging={false}
     >
