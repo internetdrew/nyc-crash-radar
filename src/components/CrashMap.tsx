@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Icon } from 'leaflet';
+// import { Icon } from 'leaflet';
 import 'leaflet/dist/images/marker-icon.png';
 
 interface CrashMapProps {
@@ -9,10 +9,10 @@ interface CrashMapProps {
 }
 
 const CrashMap = (coords: CrashMapProps) => {
-  const mapIcon = new Icon({
-    iconUrl: '',
-    iconSize: [40, 40],
-  });
+  // const mapIcon = new Icon({
+  //   iconUrl: '',
+  //   iconSize: [40, 40],
+  // });
 
   return (
     <MapContainer
