@@ -9,10 +9,10 @@ interface CrashMapProps {
 
 const CrashMap = (coords: CrashMapProps) => {
   const mapIcon = new Icon({
-    iconUrl:
-      'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png',
+    iconUrl: '/marker.svg',
     iconSize: [38, 38],
   });
+
   return (
     <MapContainer
       center={[coords.lat, coords.lng]}
