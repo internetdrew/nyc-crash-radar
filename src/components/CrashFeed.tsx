@@ -7,6 +7,7 @@ import { vehicleFormattingMap } from '@utils/vehicleMap';
 import { vehicleIconMap, DefaultVehicleIcon } from '@utils/vehicleIconMap';
 import { useIntersection } from '@mantine/hooks';
 import { formatAsSentenceCase } from '@helpers/formatAsSentenceCase';
+import CrashMap from './CrashMap';
 
 const CrashFeed = () => {
   const { isPending, error, data, fetchNextPage, isFetching } = fetchCrashes();
@@ -65,7 +66,7 @@ const CrashFeed = () => {
                   `on ${formatAsTitleCase(crash?.on_street_name)}`}
                 {crash?.borough && ` in ${formatAsTitleCase(crash.borough)}`}
               </p>
-              <section className='mt-6'>
+              <section className='mt-6 mb-2'>
                 {crash?.vehicle_type_code1 && (
                   <p className='mb-2 text-gray-800'>
                     {crash?.vehicle_type_code2 ? 'Vehicles' : 'Vehicle'}{' '}
@@ -99,33 +100,42 @@ const CrashFeed = () => {
                   })}
                 </div>
               </section>
-              <section>
-                {contributingFactorsPresent && (
+              {contributingFactorsPresent && (
+                <section>
                   <p className='mt-6 mb-2 text-gray-800'>
                     Contributing Factors
                   </p>
-                )}
-                <ul>
-                  {[
-                    crash?.contributing_factor_vehicle_1,
-                    crash?.contributing_factor_vehicle_2,
-                    crash?.contributing_factor_vehicle_3,
-                    crash?.contributing_factor_vehicle_4,
-                    crash?.contributing_factor_vehicle_5,
-                  ].map((factor, index) => {
-                    if (factor && factor !== 'Unspecified') {
-                      return (
-                        <li
-                          key={`contributing-factor-${index}`}
-                          className='mb-2 p-2 rounded-lg shadow-sm bg-slate-950 text-slate-50 font-semibold'
-                        >
-                          {formatAsSentenceCase(factor)} (Vehicle {index + 1})
-                        </li>
-                      );
-                    }
-                  })}
-                </ul>
-              </section>
+                  <ul>
+                    {[
+                      crash?.contributing_factor_vehicle_1,
+                      crash?.contributing_factor_vehicle_2,
+                      crash?.contributing_factor_vehicle_3,
+                      crash?.contributing_factor_vehicle_4,
+                      crash?.contributing_factor_vehicle_5,
+                    ].map((factor, index) => {
+                      if (factor && factor !== 'Unspecified') {
+                        return (
+                          <li
+                            key={`contributing-factor-${index}`}
+                            className='mb-2 p-2 rounded-lg shadow-sm bg-slate-950 text-slate-50 font-semibold'
+                          >
+                            {formatAsSentenceCase(factor)} (Vehicle {index + 1})
+                          </li>
+                        );
+                      }
+                    })}
+                  </ul>
+                </section>
+              )}
+
+              {crash?.latitude && crash?.longitude && (
+                <section>
+                  <CrashMap
+                    lat={parseFloat(crash?.latitude)}
+                    lng={parseFloat(crash?.longitude)}
+                  />
+                </section>
+              )}
             </div>
           );
         }

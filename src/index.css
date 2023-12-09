@@ -9,3 +9,7 @@
     @apply bg-stone-200;
   }
 }
+
+.leaflet-container {
+  height: 12rem;
+}
