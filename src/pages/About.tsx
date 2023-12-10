@@ -12,7 +12,7 @@ const About = () => {
         headingText={AboutHeader.Heading}
         subheadingText={AboutHeader.Subheading}
       />
-      <section className='mt-20 text-xl'>
+      <section className='mt-20 text-xl px-4 sm:px-0'>
         <p>
           The city of New York has many open data APIs available to the public.
           This project leverages{' '}
