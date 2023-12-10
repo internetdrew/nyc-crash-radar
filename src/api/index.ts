@@ -1,0 +1,1 @@
+export { fetchCrashes } from './fetchCrashes';

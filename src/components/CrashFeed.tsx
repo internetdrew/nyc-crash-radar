@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 
-import { fetchCrashes } from '@api/fetchCrashes';
-import { formatAsTitleCase } from '@helpers/formatAsTitleCase';
-import { formatDate } from '@helpers/formatDate';
-import { vehicleFormattingMap } from '@utils/vehicleMap';
-import { vehicleIconMap, DefaultVehicleIcon } from '@utils/vehicleIconMap';
+import { fetchCrashes } from '@api';
+import { formatAsTitleCase, formatDate, formatAsSentenceCase } from '@helpers';
+import {
+  vehicleIconMap,
+  DefaultVehicleIcon,
+  vehicleFormattingMap,
+} from '@utils';
 import { useIntersection } from '@mantine/hooks';
-import { formatAsSentenceCase } from '@helpers/formatAsSentenceCase';
 import CrashMap from './CrashMap';
 
 const CrashFeed = () => {

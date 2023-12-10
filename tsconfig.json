@@ -21,11 +21,12 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@api/*": ["src/api/*"],
-      "@utils/*": ["src/utils/*"],
-      "@helpers/*": ["src/helpers/*"],
-      "@components/*": ["src/components/*"]
+      "@": ["src"],
+      "@api": ["src/api"],
+      "@utils": ["src/utils"],
+      "@pages": ["src/pages"],
+      "@helpers": ["src/helpers"],
+      "@components": ["src/components"]
     }
   },
   "include": ["src"],
