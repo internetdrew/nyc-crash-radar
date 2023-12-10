@@ -12,7 +12,12 @@ const Navbar = () => {
         </Link>
         <ul>
           <li>
-            <Link to={'/about'}>About</Link>
+            <Link
+              to={'/about'}
+              className='text-lg font-semibold underline-offset-2 transition duration-300  hover:underline'
+            >
+              About
+            </Link>
           </li>
         </ul>
       </div>

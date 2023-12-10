@@ -21,6 +21,7 @@ const CrashMap = (coords: CrashMapProps) => {
       zoom={20}
       scrollWheelZoom={false}
       dragging={false}
+      className='z-0'
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
