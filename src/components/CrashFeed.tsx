@@ -130,7 +130,7 @@ const CrashFeed = () => {
               )}
 
               {crash?.latitude && crash?.longitude && (
-                <section>
+                <section className='mt-4'>
                   <CrashMap
                     lat={parseFloat(crash?.latitude)}
                     lng={parseFloat(crash?.longitude)}
