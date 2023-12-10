@@ -12,6 +12,19 @@ const About = () => {
         headingText={AboutHeader.Heading}
         subheadingText={AboutHeader.Subheading}
       />
+      <section className='mt-20 text-xl'>
+        <p>
+          The city of New York has many open data APIs available to the public.
+          This project leverages{' '}
+          <a
+            href='https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95'
+            target='_blank'
+          >
+            the Motor Vehicle Collisions - Crashes API
+          </a>
+          .
+        </p>
+      </section>
     </main>
   );
 };

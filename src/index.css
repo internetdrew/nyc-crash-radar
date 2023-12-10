@@ -8,6 +8,10 @@
   body {
     @apply bg-stone-200;
   }
+
+  a {
+    @apply font-semibold underline-offset-2 transition duration-300 hover:underline;
+  }
 }
 
 .leaflet-container {
