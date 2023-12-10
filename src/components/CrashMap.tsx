@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/images/marker-icon.png';
+import MapMarker from '../assets/map-marker.svg';
 
 interface CrashMapProps {
   lat: number;
@@ -10,7 +11,7 @@ interface CrashMapProps {
 
 const CrashMap = (coords: CrashMapProps) => {
   const mapIcon = new Icon({
-    iconUrl: '/map-marker.svg',
+    iconUrl: MapMarker,
     iconSize: [30, 30],
   });
 
@@ -20,7 +21,6 @@ const CrashMap = (coords: CrashMapProps) => {
       zoom={20}
       scrollWheelZoom={false}
       dragging={false}
-      className='z-0'
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
