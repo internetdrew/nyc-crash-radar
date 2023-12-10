@@ -1,6 +1,6 @@
 interface HeaderProps {
   headingText: string;
-  subheadingText: string;
+  subheadingText?: string;
 }
 
 const Header = ({ headingText, subheadingText }: HeaderProps) => {
@@ -12,7 +12,9 @@ const Header = ({ headingText, subheadingText }: HeaderProps) => {
       <h1 className='text-2xl bg-black text-stone-200 inline-block px-4 py-2 font-bold sm:text-3xl'>
         {headingText}
       </h1>
-      <h2 className='text-xl sm:text-2xl'>{subheadingText}</h2>
+      {subheadingText && (
+        <h2 className='text-xl sm:text-2xl'>{subheadingText}</h2>
+      )}
     </header>
   );
 };
