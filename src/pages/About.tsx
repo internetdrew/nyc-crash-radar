@@ -8,7 +8,7 @@ const About = () => {
   return (
     <main className='max-w-xl mx-auto'>
       <Header headingText={AboutHeader.Heading} />
-      <section className='mt-20 text-xl px-4 sm:px-0 space-y-4'>
+      <section className='my-20 text-xl px-4 sm:px-0 space-y-4'>
         <p>
           The city of New York has many open data APIs available to the public.
           This project leverages{' '}
