@@ -13,7 +13,7 @@ const Header = ({ headingText, subheadingText }: HeaderProps) => {
         {headingText}
       </h1>
       {subheadingText && (
-        <h2 className='text-xl sm:text-2xl'>{subheadingText} test</h2>
+        <h2 className='text-xl sm:text-2xl'>{subheadingText}</h2>
       )}
     </header>
   );
